@@ -48,4 +48,16 @@ class Folder
 
         rmdir($folder);
     }
+    
+    public static function empty(string $folder)
+    {
+        foreach (glob($folder . '/*') as $file) {
+            if (is_dir($file)) {
+                self::rrmdir($file);
+            } else {
+                unlink($file);
+            }
+        }
+        
+    }
 }
