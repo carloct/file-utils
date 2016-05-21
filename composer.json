@@ -14,5 +14,6 @@
         "psr-4": {
             "Belt\\Test\\": "tests/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
