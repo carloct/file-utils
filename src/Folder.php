@@ -22,8 +22,10 @@ class Folder
      */
     public static function create(string $folder, int $mode = 0777) : bool
     {
+        // race condition, PHP was really never meant to be concurrent
+        // suppress mkdir returning false if the folder already exists
         if (!file_exists($folder)) {
-            return mkdir($folder, $mode, true);
+            return @mkdir($folder, $mode, true);
         }
 
         return true;
